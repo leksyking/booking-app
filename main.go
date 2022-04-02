@@ -6,6 +6,7 @@ func main() {
 	conferenceName := "Go Conference"
 	const conferenceTickets int = 50
 	var remainingTickets uint = 50
+	var bookings []string
 
 	fmt.Printf("conference Ticket is %T, remaining Ticket is %T and conferenceName is %T.\n", conferenceTickets, remainingTickets, conferenceName)
 	fmt.Printf("Welcome to our %v booking application\n", conferenceName)
@@ -16,6 +17,7 @@ func main() {
 	var lastName string
 	var email string
 	var userTickets uint
+
 	//ask users for their name
 	fmt.Println("Enter your first name: ")
 	fmt.Scan(&firstName)
@@ -30,7 +32,9 @@ func main() {
 	fmt.Scan(&userTickets)
 
 	remainingTickets -= userTickets
+	bookings = append(bookings, firstName+" "+lastName)
 
 	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
-	fmt.Printf("%v tickets remaining for %v", remainingTickets, conferenceName)
+	fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
+	fmt.Printf("These are all our bookings: %v\n", bookings)
 }
