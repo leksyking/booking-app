@@ -3,14 +3,13 @@ package main
 import (
 	"fmt"
 	"strconv"
-	"strings"
 )
 
 const conferenceTickets int = 50
 
 var conferenceName string = "Go Conference"
 var remainingTickets uint = 50
-var bookings []string
+var bookings = make([]map[string]string, 0)
 
 func main() {
 	//Greet users
@@ -59,8 +58,8 @@ func greetUser() {
 func getFirstNames() []string {
 	firstNames := []string{}
 	for _, booking := range bookings {
-		var names = strings.Fields(booking)
-		firstNames = append(firstNames, names[0])
+		var names = booking["firstName"]
+		firstNames = append(firstNames, names)
 	}
 	return firstNames
 }
