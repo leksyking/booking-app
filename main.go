@@ -3,8 +3,6 @@ package main
 import (
 	"fmt"
 	"strings"
-
-	"github.com/leksyking/booking-app/helper"
 )
 
 const conferenceTickets int = 50
@@ -21,7 +19,7 @@ func main() {
 		//get user inputs
 		firstName, lastName, email, userTickets := getUserInput()
 		//validate user inputs
-		isValidName, isValidEmail, isValidTicketNumber := helper.ValidateUserInput(firstName, lastName, email, userTickets, remainingTickets)
+		isValidName, isValidEmail, isValidTicketNumber := validateUserInput(firstName, lastName, email, userTickets)
 
 		if isValidEmail && isValidName && isValidTicketNumber {
 			//book Ticket
