@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 const conferenceTickets int = 50
@@ -30,6 +31,8 @@ func main() {
 		if isValidEmail && isValidName && isValidTicketNumber {
 			//book Ticket
 			bookTicket(userTickets, firstName, lastName, email)
+			//send Ticket
+			sendTicket(userTickets, firstName, lastName, email)
 			//call function to print first names
 			firstNames := getFirstNames()
 			fmt.Printf("The first names of the bookings are: %v\n", firstNames)
@@ -94,7 +97,7 @@ func getUserInput() (string, string, string, uint) {
 func bookTicket(userTickets uint, firstName, lastName, email string) {
 	remainingTickets -= userTickets
 
-	//create a map of users
+	//set a struct of users
 	var userData = UserData{
 		firstName:       firstName,
 		lastName:        lastName,
@@ -106,4 +109,12 @@ func bookTicket(userTickets uint, firstName, lastName, email string) {
 
 	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
 	fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
+}
+
+func sendTicket(userTickets uint, firstName, lastName, email string) {
+	time.Sleep(10 * time.Second)
+	var ticket = fmt.Sprintf("%v tickets for %v %v", userTickets, firstName, lastName)
+	fmt.Println("################")
+	fmt.Printf("Sending tickets:\n %v \nto email address %v\n", ticket, email)
+	fmt.Println("################")
 }
